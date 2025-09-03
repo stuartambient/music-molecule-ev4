@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useCallback } from 'react';
 import classNames from 'classnames';
 import { handleManualChange } from './utility/audioUtils';
 /* import { GiPauseButton, GiPlayButton } from 'react-icons/gi';
@@ -29,9 +29,35 @@ import './App.css';
 
 function App() {
   const { state, dispatch } = useAudioPlayer();
-  const [mainTheme, setMainTheme] = useState('');
+  /*  const [mainTheme, setMainTheme] = useState(''); */
 
+  const handleThemeUpdate = useCallback(async () => {
+    const preferences = await window.api.getPreferences();
+
+    if (preferences.mainTheme && preferences.mainTheme !== state.mainTheme) {
+      console.log('not equal');
+      dispatch({
+        type: 'set-main-theme',
+        mainTheme: preferences.mainTheme
+      });
+    }
+  }, [state.mainTheme, dispatch]);
+
+  // Run check when mainTheme changes
   useEffect(() => {
+    handleThemeUpdate();
+  }, [handleThemeUpdate]);
+
+  // Setup subscription once
+  useEffect(() => {
+    window.api.onMainThemeUpdate(handleThemeUpdate);
+
+    return () => {
+      window.api.off('main-theme-updated', handleThemeUpdate);
+    };
+  }, [handleThemeUpdate]);
+
+  /*   useEffect(() => {
     const handleThemeUpdate = async () => {
       const preferences = await window.api.getPreferences();
 
@@ -51,7 +77,7 @@ function App() {
     return () => {
       window.api.off('main-theme-updated', handleThemeUpdate);
     };
-  }, []);
+  }, [dispatch, state.mainTheme]); */
 
   /*   useEffect(() => {
     const sendNotice = async () => { */
@@ -192,7 +218,7 @@ audio/wav canPlay:  maybe */
     return () => {
       window.api.off('track-like-removed', handleLikeRemoved);
     };
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const handleTrackLiked = (e) => {
@@ -216,7 +242,7 @@ audio/wav canPlay:  maybe */
     return () => {
       window.api.off('track-liked', handleTrackLiked);
     };
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     let subscribed = true;

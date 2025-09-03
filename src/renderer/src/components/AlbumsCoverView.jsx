@@ -332,7 +332,8 @@ const AlbumsCoverView = ({ /* resetKey,  */ coverSize, className }) => {
         coversPageNumber: state.coversPageNumber + 1
       });
     }
-  }, [coversObserver /* , dispatch, state.covers.length, state.coversPageNumber */]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [coversObserver]);
 
   const coverImageSize = classNames('cover-image', {
     'image-small': coverSize === 1,
