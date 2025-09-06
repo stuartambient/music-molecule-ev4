@@ -134,6 +134,8 @@ const checkAgainstEntries = (data) => {
     try {
       const dbAlbums = getAlbums();
       const dbAlbumsFullpath = dbAlbums.map((album) => album.fullpath);
+      /* console.log('DB sample:', dbAlbumsFullpath.slice(0, 3));
+      console.log('FS sample:', data.slice(0, 3)); */
       const allAlbums = new Set(data);
       const dbEntries = new Set(dbAlbumsFullpath);
 
@@ -166,9 +168,37 @@ const checkAgainstEntries = (data) => {
 };
 
 const topDirs = async (root) => {
-  const entries = await fsPromises.readdir(root);
-  return entries.map((entry) => `${root}/${entry}`);
+  /*  const entries = await fsPromises.readdir(root);
+  return entries.map((entry) => `${root}/${entry}`); */
+
+  try {
+    const entries = await fsPromises.readdir(root, { withFileTypes: true });
+
+    return entries
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => `${root}/${dirent.name}`);
+  } catch (err) {
+    // Root itself might be missing, unreadable, or not a directory
+    console.error(`Skipping root ${root}:`, err.message);
+    return [];
+  }
 };
+
+/* const topDirs = async (root) => {
+  try {
+    // Ask for Dirent objects (not just strings)
+    const entries = await fsPromises.readdir(root, { withFileTypes: true });
+
+    // Only keep directories (ignores files, shortcuts, symlinks, etc.)
+    return entries
+      .filter((dirent) => dirent.isDirectory())
+      .map((dirent) => path.join(root, dirent.name));
+  } catch (err) {
+    // Root itself might not exist or be a shortcut
+    console.error(`Error reading root ${root}:`, err.message);
+    return [];
+  }
+}; */
 
 const run = async (cb) => {
   let dirs = [];

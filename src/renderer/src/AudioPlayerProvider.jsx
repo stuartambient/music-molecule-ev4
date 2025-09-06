@@ -1,15 +1,5 @@
-import {
-  createContext,
-  useReducer,
-  useState,
-  useContext,
-  useRef,
-  useCallback,
-  useEffect
-} from 'react';
-/* this should appear in refactor/useContext only */
-// Context creation
-const AudioPlayerContext = createContext();
+import { useReducer, useRef, useCallback, useEffect } from 'react';
+import { MainAudioContext } from './mainAudioContext';
 
 // Reducer function to manage state updates
 const audioPlayerReducer = (state, action) => {
@@ -456,13 +446,13 @@ const audioPlayerReducer = (state, action) => {
 };
 
 // A custom hook to use the audio player context
-export const useAudioPlayer = () => {
-  const context = useContext(AudioPlayerContext);
+/* export const useAudioPlayer = () => {
+  const context = useContext(MainAudioContext);
   if (context === undefined) {
     throw new Error('useAudioPlayer must be used within an AudioPlayerProvider');
   }
   return context;
-};
+}; */
 
 // Provider component that encapsulates the state logic
 export const AudioPlayerProvider = ({ children }) => {
@@ -572,8 +562,6 @@ export const AudioPlayerProvider = ({ children }) => {
   }, [setInitialPage]);
 
   return (
-    <AudioPlayerContext.Provider value={{ state, dispatch }}>
-      {children}
-    </AudioPlayerContext.Provider>
+    <MainAudioContext.Provider value={{ state, dispatch }}>{children}</MainAudioContext.Provider>
   );
 };

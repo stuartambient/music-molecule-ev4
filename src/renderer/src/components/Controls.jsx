@@ -1,4 +1,4 @@
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import { FaHeart, FaBackward, FaForward, FaListUl, FaRandom } from 'react-icons/fa';
 import { GiPauseButton, GiPlayButton } from 'react-icons/gi';
 /* import Icon1 from '../assets/icon_1.png'; */

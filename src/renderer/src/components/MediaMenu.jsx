@@ -1,4 +1,4 @@
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { AiFillDownSquare } from 'react-icons/ai';
 import { LuScrollText } from 'react-icons/lu';

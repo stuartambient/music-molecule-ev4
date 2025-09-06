@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import { useAllAlbumsCovers } from '../hooks/useDb';
 import handleTrackSelect from '../utility/audioUtils';
 import NoImage from '../assets/noimage.jpg';

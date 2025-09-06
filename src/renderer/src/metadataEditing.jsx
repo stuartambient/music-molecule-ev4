@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './assets/index.css';
 import MetadataEditingApp from './components/ChildWindows/metadataEditingWindow/MetadataEditingComponent';
-import { AudioProvider } from './components/table/AudioContext';
+import { AudioProvider } from './components/table/AudioProvider';
 import { ThemeProvider } from './ThemeContext';
 import './themes.css';
 

@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState, useMemo } from 'react';
 import { Virtuoso } from 'react-virtuoso';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import Row from './Row';
 /* import { MdDeselect } from 'react-icons/md'; */
 import { FaAsterisk } from 'react-icons/fa';

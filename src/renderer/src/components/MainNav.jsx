@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import { useEffect, useState } from 'react';
 import StatusLoader from './table/StatusLoader';
 import { AiOutlineMenu, AiOutlineInfoCircle } from 'react-icons/ai';
@@ -16,12 +16,25 @@ const MainNav = ({ onClick }) => {
   const [updateResults, setUpdateResults] = useState(null);
 
   const parseUpdateType = (type, result) => {
+    console.log('type: ', type, 'update-results: ', updateResults);
     switch (type) {
       case 'files':
       case 'folders':
         return result.nochange
           ? `${type} update completed, no changes`
           : `${type} new: ${result.new} del: ${result.deleted}`;
+
+      case 'folders-error':
+        return 'folder update error';
+
+      case 'files-error':
+        return 'file update error';
+
+      case 'covers-error':
+        return 'cover update error';
+
+      case 'meta-error':
+        return 'metadata update error';
 
       case 'metadata':
         return result.nochange
@@ -45,7 +58,25 @@ const MainNav = ({ onClick }) => {
   }, [updateResults, updateOption]);
 
   useEffect(() => {
+    const handleUpdateError = (type, result) => {
+      console.log('type: ', type, 'result: ', result);
+      setUpdateResults(parseUpdateType(type, result));
+      setUpdateOption(null);
+      setTimeout(() => {
+        setUpdateResults(null);
+      }, 4000);
+    };
+
+    window.api.onUpdateError(handleUpdateError);
+    return () => {
+      window.api.off('update-error', handleUpdateError);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
     const handleUpdate = (type, result) => {
+      console.log('type: ', type, 'result: ', result);
       setUpdateResults(parseUpdateType(type, result));
       setUpdateOption(null);
       setTimeout(() => {
@@ -57,6 +88,7 @@ const MainNav = ({ onClick }) => {
     return () => {
       window.api.off('update-complete', handleUpdate);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

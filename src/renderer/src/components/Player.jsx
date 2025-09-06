@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import classNames from 'classnames';
 import { TbWorldSearch } from 'react-icons/tb';
 import PlayerScrubber from './PlayerScrubber';

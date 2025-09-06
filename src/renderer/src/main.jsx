@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { AudioPlayerProvider } from './AudioPlayerContext'; // Import the provider
+import { AudioPlayerProvider } from './AudioPlayerProvider'; // Import the provider
 import './assets/index.css';
 import App from './App';
 

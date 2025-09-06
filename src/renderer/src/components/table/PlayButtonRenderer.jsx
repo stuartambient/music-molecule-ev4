@@ -1,5 +1,5 @@
 import { CiPlay1, CiPause1 } from 'react-icons/ci';
-import { useAudio } from './AudioContext';
+import { useAudio } from './audioContext';
 import './styles/PlayButtonRenderer.css';
 
 const PlayButtonRenderer = (props) => {

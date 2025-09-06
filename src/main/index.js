@@ -111,6 +111,7 @@ function shouldRestartOnError(err) {
   return criticalErrors.includes(err.name);
 }
 
+// eslint-disable-next-line unused-imports/no-unused-vars, no-unused-vars
 const task = (label) => {
   console.log(`Task ran for ${label} at ${new Date().toLocaleString()}`);
 };
@@ -177,8 +178,10 @@ const getCurrentSchedule = async () => {
   }
 };
 
+// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-vars
 async function backfillTags() {
   try {
+    // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-vars
     const workerPath = process.resourcesPath;
     const worker = await createBackfillWorker({ workerData: { batchSize: 20000 } });
     worker
@@ -266,7 +269,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, '../preload/index.js'),
       additionalArguments: [`--mainTheme=${mainTheme}`],
-      sandbox: true,
+      sandbox: false,
       webSecurity: true,
       contextIsolation: true
       /* additionalArguments: [`--mainTheme=${mainTheme}`] */
@@ -335,11 +338,15 @@ app.whenReady().then(async () => {
 
   await session.defaultSession.clearCache().then(() => console.log('Cache cleared!'));
 
-  const reactDevTools = 'C:/Users/sambi/documents/Devtools2/4.27.1_0';
+  /*  const reactDevTools = 'C:/users/sambi/documents/Devtools2/6.1.5_0';
 
-  await session.defaultSession
-    .loadExtension(reactDevTools, { allowFileAccess: true })
-    .then((success) => console.log('react-devtools-loaded'));
+  try {
+    await session.defaultSession
+      .loadExtension(reactDevTools, { allowFileAccess: true })
+      .then((success) => console.log('success: ', success));
+  } catch (error) {
+    console.error('loadextension: ', error);
+  } */
 
   /*   electronApp.setAppUserModelId('com.electron'); */
 
@@ -578,11 +585,13 @@ ipcMain.handle('update-folders', async () => {
       })
       .on('error', (err) => {
         console.error('Worker error:', err);
+        mainWindow.webContents.send('update-error', 'folders-error', { result: err.message });
       })
       .on('exit', (code) => {
         if (code !== 0) {
           const errorMessage = `Worker stopped with exit code ${code}`;
           console.error(errorMessage);
+          mainWindow.webContents.send('update-error', 'folders-error', { result: errorMessage });
         }
       })
       .postMessage('');
@@ -616,11 +625,13 @@ ipcMain.handle('update-files', async () => {
       })
       .on('error', (err) => {
         console.error('Worker error:', err);
+        mainWindow.webContents.send('update-error', 'files-error', { result: err.message });
       })
       .on('exit', (code) => {
         if (code !== 0) {
           const errorMessage = `Worker stopped with exit code ${code}`;
           console.error(errorMessage);
+          mainWindow.webContents.send('update-error', 'files-error', { result: errorMessage });
         }
       })
       .postMessage('');
@@ -651,11 +662,13 @@ ipcMain.handle('update-meta', async () => {
       })
       .on('error', (err) => {
         console.error('Worker error:', err);
+        mainWindow.webContents.send('update-error', 'meta-error', { result: err.message });
       })
       .on('exit', (code) => {
         if (code !== 0) {
           const errorMessage = `Worker stopped with exit code ${code}`;
           console.error(errorMessage);
+          mainWindow.webContents.send('update-error', 'meta-error', { result: errorMessage });
         }
       })
       .postMessage('');
@@ -680,11 +693,13 @@ ipcMain.handle('update-covers', async () => {
       })
       .on('error', (err) => {
         console.error('Worker error:', err);
+        mainWindow.webContents.send('update-error', 'covers-error', { result: err.message });
       })
       .on('exit', (code) => {
         if (code !== 0) {
           const errorMessage = `Worker stopped with exit code ${code}`;
           console.error(errorMessage);
+          mainWindow.webContents.send('update-error', 'covers-error', { result: errorMessage });
         }
       })
       .postMessage('');
@@ -1430,7 +1445,7 @@ ipcMain.handle('download-tag-image', async (event, ...args) => {
 
 ipcMain.handle('select-image-from-folder', async (event, arr, delayDownload = false) => {
   let tempFile;
-  const filePath = arr;
+  /* const filePath = arr; */
   const startFolder = Array.isArray(arr) ? path.dirname(arr[0]) : path.dirname(arr);
   const targetWindow = getWindow('table-data');
 

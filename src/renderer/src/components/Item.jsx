@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import ContextMenu from './ContextMenu';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import handleTrackSelect from '../utility/audioUtils';
 import { Plus, Minus } from '../assets/icons';
 import '../style/FlashEffect.css';

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import { convertDurationSeconds, convertCurrentTime, convertToSeconds } from '../hooks/useTime';
 
 const PlayerScrubber = ({ cTime, setCTime }) => {

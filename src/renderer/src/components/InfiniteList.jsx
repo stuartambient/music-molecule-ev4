@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, Profiler } from 'react';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import { handleManualChange, unloadFile } from '../utility/audioUtils';
 import { GiPlayButton } from 'react-icons/gi';
 

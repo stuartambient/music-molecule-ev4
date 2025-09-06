@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import { BsThreeDots } from 'react-icons/bs';
 import '../style/FlashEffect.css';
 

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 
 import ScheduleForm from './ScheduleForm';
 import NativeDragDropFolderInput from './NativeDragDropFolderInput';

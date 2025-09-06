@@ -16,8 +16,8 @@ import classNames from 'classnames';
 import CustomLoadingOverlay from './CustomLoadingOverlay';
 import CustomNoRowsOverlay from './CustomNoRowsOverlay';
 import CustomToolPanel from './CustomToolPanel';
-import EditForm from './EditForm';
 import { openChildWindow } from '../ChildWindows/openChildWindow';
+import EditForm from './EditForm';
 import { useColumnDefinitions } from './useTableDefinitions';
 import { useColumnTypes } from './useColumnTypes';
 import { themeQuartz } from 'ag-grid-community';
@@ -27,6 +27,7 @@ import { useTheme } from '../../ThemeContext';
 
 const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
   /* const [originalData, setOriginalData] = useState(null); */
+  // eslint-disable-next-line no-unused-vars, unused-imports/no-unused-vars
   const [gridReady, setGridReady] = useState(false);
   const [rowData, setRowData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -43,7 +44,7 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
 
   /* const [imageFolderPath, setImageFolderPath] = useState(null); */
   const [tempFolder, setTempFolder] = useState(null);
-  const [folderPath, setFolderPath] = useState(null);
+  /* const [folderPath, setFolderPath] = useState(null); */
   const [tagReport, setTagReport] = useState({ result: '', passed: [], failed: [] });
   /*   const [picNode, setPicNode] = useState(null);
   const [picPath, setPicPath] = useState(null); */
@@ -52,7 +53,7 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
   const gridRef = useRef(null);
   const [undos, setUndos] = useState([]);
   const [redos, setRedos] = useState([]);
-  const isLoading = rowData === null || rowData === undefined;
+  /* const isLoading = rowData === null || rowData === undefined; */
 
   const { theme } = useTheme();
   const failedIds = useMemo(() => tagReport?.failed?.map((item) => item.id) || [], [tagReport]);
@@ -85,6 +86,7 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
     return () => {
       window.metadataEditingApi.off('send-to-child', handleSendToChild);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const myTheme = useMemo(() => {
@@ -221,12 +223,13 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
     return { artist, title, path: paths };
   }, []);
 
-  const handleNumNodes = () => {
+  /*   const handleNumNodes = () => {
     const n = gridRef.current.api.getSelectedNodes();
     return n.length;
-  };
+  }; */
 
-  const handleEmbedPicture = useCallback((values) => {
+  /*   const handleEmbedPicture = useCallback((values) => {
+    console.log('handleEmbedPicture: ', values);
     let artist,
       title,
       path,
@@ -261,17 +264,63 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
     return () => {
       window.metadataEditingApi.off('context-menu-command', handleEmbedPicture);
     };
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); */
+
+  const embedPictureHandlerRef = useRef();
+
+  useEffect(() => {
+    embedPictureHandlerRef.current = (values) => {
+      let artist,
+        title,
+        path,
+        type = values.type;
+
+      if (type === 'single-track') {
+        artist = values.params.artist;
+        title = values.params.album;
+        path = values.params.path;
+      } else if (type === 'search-folder-single') {
+        return setTempFolder(values.params.path);
+      }
+
+      return openChildWindow(
+        'cover-search-alt-tags',
+        'cover-search-alt-tags',
+        {
+          width: 700,
+          height: 600,
+          show: false,
+          resizable: true,
+          preload: 'coverSearchAlt',
+          sandbox: true,
+          webSecurity: true,
+          contextIsolation: true
+        },
+        { artist, title, path, type }
+      );
+    };
+  });
+
+  useEffect(() => {
+    const wrapped = (values) => embedPictureHandlerRef.current?.(values);
+
+    window.metadataEditingApi.onContextMenuCommand(wrapped);
+    return () => {
+      window.metadataEditingApi.off('context-menu-command', wrapped);
+    };
+  }, []); // subscribe once */
 
   useEffect(() => {
     const handleTagUpdateStatus = (val) => {
-      const currentFailedIds = tagReport?.failed?.map((item) => item.id) || [];
+      /* const currentFailedIds = tagReport?.failed?.map((item) => item.id) || []; */
       switch (val.status) {
         case 'success':
           return setUndos([]);
 
         case 'partial_status':
-        /* return setUndos([]); */
+          /* return setUndos([]); */
+          break;
         case 'failed': {
           const currentFailedIds = new Set(val.failed.map((f) => f.id));
           const retainedUndos = undos.filter((u) => currentFailedIds.has(u.audiotrack));
@@ -289,7 +338,7 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
     return () => {
       window.metadataEditingApi.off('updated-tags', handleTagUpdateStatus);
     };
-  }, [tagReport]);
+  }, [tagReport, undos]);
 
   useEffect(() => {
     if (tempFolder) {
@@ -331,15 +380,15 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
       window.metadataEditingApi.off('for-submit-form', handleForSubmit);
       window.metadataEditingApi.off('save-image-folder', handleImageFolder);
     };
-  }, []);
+  }, [nodesSelected.length]);
 
   const togglePanelVisibility = () => {
     setIsPanelVisible(!isPanelVisible);
   };
 
-  const CustomNoDataOverlay = () => (
+  /*  const CustomNoDataOverlay = () => (
     <div className="ag-overlay-no-rows-center">No data available</div>
-  );
+  ); */
 
   /*   const handleColumnPanel = (e) => {
     const col = e.target.name; // Get the column ID from the event
@@ -669,7 +718,7 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
         return params.data.tagWarnings === 1;
       } */
     };
-  });
+  }, [failedIds]);
 
   const deselectAll = useCallback(() => {
     gridRef.current.api.deselectAll();

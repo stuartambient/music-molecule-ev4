@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import { v4 as uuidv4 } from 'uuid';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { AiFillDownSquare } from 'react-icons/ai';

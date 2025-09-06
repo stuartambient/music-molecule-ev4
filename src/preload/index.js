@@ -121,5 +121,10 @@ contextBridge.exposeInMainWorld('api', {
       cb(type, result);
     });
   },
+  onUpdateError: (cb) => {
+    ipcRenderer.on('update-error', (event, type, result) => {
+      cb(type, result);
+    });
+  },
   off: (channel, callback) => ipcRenderer.removeListener(channel, callback)
 });

@@ -1,4 +1,4 @@
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import { HiMiniBolt } from 'react-icons/hi2';
 import { FaStop } from 'react-icons/fa';
 import '../style/Extras.css';

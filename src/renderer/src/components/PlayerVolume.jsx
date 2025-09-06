@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 
 const PlayerVolume = () => {
   const { state, dispatch } = useAudioPlayer();

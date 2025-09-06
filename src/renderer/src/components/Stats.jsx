@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { FaMeta } from 'react-icons/fa6';
-import { useAudioPlayer } from '../AudioPlayerContext';
+import { useAudioPlayer } from '../mainAudioContext';
 import {
   TotalMedia,
   TopHundredArtists,

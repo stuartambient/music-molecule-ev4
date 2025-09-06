@@ -1,6 +1,5 @@
-import React from 'react';
 import { useTheme } from '../../ThemeContext';
-import { useAudio } from './AudioContext';
+import { useAudio } from './audioContext';
 import CustomSlider from './CustomSlider';
 import { PiStopBold } from 'react-icons/pi';
 import { FaRegCirclePause } from 'react-icons/fa6';

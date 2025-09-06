@@ -1,4 +1,4 @@
-import { useAudioPlayer } from '../../AudioPlayerContext';
+import { useAudioPlayer } from '../../mainAudioContext';
 import './styles/StatusLoader.css';
 
 const StatusLoader = ({ config }) => {
