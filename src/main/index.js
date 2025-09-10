@@ -15,6 +15,7 @@ import cron from 'node-cron';
 import { logger } from './utility/logger.js';
 import { fileURLToPath } from 'url';
 import process from 'node:process';
+import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import { createOrUpdateChildWindow, getWindowNames, getWindow } from './windowManager.js';
 import mime from 'mime-types';
@@ -26,10 +27,8 @@ import createUpdateFoldersWorker from './updateFoldersWorker?nodeWorker';
 import createUpdateCoversWorker from './updateCoversWorker?nodeWorker';
 import createUpdateMetadataWorker from './updateMetadataWorker?nodeWorker';
 import createBackfillWorker from './backfillWorker?nodeWorker';
-/* import createUpdateTagImageWorker from './updateTagImageWorker?nodeWorker'; */
 import axios from 'axios';
 import { electronApp, optimizer, is } from '@electron-toolkit/utils';
-/* import { convertToUTC } from './utility/index.js'; */
 import searchCover from './folderImageCheck.js';
 import db from './connection.js';
 
@@ -269,7 +268,7 @@ function createWindow() {
     webPreferences: {
       preload: path.join(__dirname, '../preload/index.js'),
       additionalArguments: [`--mainTheme=${mainTheme}`],
-      sandbox: false,
+      sandbox: true,
       webSecurity: true,
       contextIsolation: true
       /* additionalArguments: [`--mainTheme=${mainTheme}`] */
@@ -315,20 +314,18 @@ function createWindow() {
   } else {
     mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'));
   }
-
-  // On-demand loading of React DevTools
-
-  /*   mainWindow.webContents.on('devtools-opened', async () => {
-    try {
-      await installExtension(REACT_DEVELOPER_TOOLS, {
-        loadExtensionOptions: { allowFileAccess: true }
-      });
-      console.log('✅ React DevTools loaded');
-    } catch (err) {
-      console.error('❌ Failed to load React DevTools:', err);
-    }
-  }); */
 }
+
+function launchDevTools() {
+  const bin = process.platform === 'win32' ? 'react-devtools.cmd' : 'react-devtools';
+
+  const binPath = path.join(app.getAppPath(), 'node_modules', '.bin', bin);
+  console.log('binPath: ', binPath);
+  const bat = spawn(binPath, { shell: true });
+  bat.unref(); // don't tie Electron lifecycle to DevTools
+}
+
+launchDevTools();
 
 app.whenReady().then(async () => {
   const createRootsTable = `CREATE TABLE IF NOT EXISTS roots ( id INTEGER PRIMARY KEY AUTOINCREMENT, root TEXT UNIQUE)`;
@@ -337,18 +334,6 @@ app.whenReady().then(async () => {
   /*   console.log('Using colors for menu:', colors.background, colors.foreground); */
 
   await session.defaultSession.clearCache().then(() => console.log('Cache cleared!'));
-
-  /*  const reactDevTools = 'C:/users/sambi/documents/Devtools2/6.1.5_0';
-
-  try {
-    await session.defaultSession
-      .loadExtension(reactDevTools, { allowFileAccess: true })
-      .then((success) => console.log('success: ', success));
-  } catch (error) {
-    console.error('loadextension: ', error);
-  } */
-
-  /*   electronApp.setAppUserModelId('com.electron'); */
 
   electronApp.setAppUserModelId(process.execPath);
 

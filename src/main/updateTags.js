@@ -1,41 +1,26 @@
-import path from 'node:path';
-import fs from 'fs/promises';
-import os from 'os';
 import {
   Picture,
   File,
-  Id3v2TextInformationFrame,
-  Id3v2Tag,
-  Id3v1Tag,
   MpegAudioFileSettings,
   FlacFileSettings,
   TagTypes,
   PictureType,
-  ByteVector,
-  TagTypesOnDisk
+  ByteVector
 } from 'node-taglib-sharp';
-import { inspectTags, extraneousTags, fileType } from './tag-inspector.js';
+import { inspectTags, extraneousTags } from './tag-inspector.js';
 import { getTagInfo } from './musicMetadata.js';
-import decodeTagTypes from './decodeTagTypes';
 import { extractPresentFields } from './tags/index.js';
 import checkAndRemoveReadOnly from './utility/checkAndRemoveReadOnly';
 
-const PICTURE_TYPE_MAP = {
+/* const PICTURE_TYPE_MAP = {
   Other: 'Other',
   Front: 'FrontCover',
   FrontCover: 'FrontCover',
   'Cover (front)': 'FrontCover',
   0: 'Other',
   3: 'FrontCover'
-};
+}; */
 
-function toByteVector(data) {
-  /*  const bytes = Buffer.from(data[0]); // your raw bytes
-  const bv = ByteVector.fromBuffer // API varies by version
-    ? ByteVector.fromBuffer(bytes)
-    : new ByteVector(bytes); */
-  return ByteVector.fromUint(data);
-}
 const tagKeys = {
   albumArtists: (param) => param?.trim()?.split(', ') || null,
   album: (param) => param?.trim() || null,

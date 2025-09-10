@@ -20,9 +20,12 @@ function decodeTagTypes(tagTypesBitmask) {
     Matroska: 131072
   };
 
-  return Object.entries(TagTypes)
-    .filter(([_, bit]) => (tagTypesBitmask & bit) !== 0)
-    .map(([name]) => name);
+  return (
+    Object.entries(TagTypes)
+      // eslint-disable-next-line no-unused-vars
+      .filter(([_, bit]) => (tagTypesBitmask & bit) !== 0)
+      .map(([name]) => name)
+  );
 }
 
 export default decodeTagTypes;

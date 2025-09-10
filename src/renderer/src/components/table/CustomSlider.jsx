@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import { useRef } from 'react';
 import './styles/CustomSlider.css';
 
 const CustomSlider = ({ value, onChange, min = 0, max = 1, step = 0.01 }) => {

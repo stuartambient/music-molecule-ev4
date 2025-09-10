@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import StatusTagLoader from './StatusTagLoader';
 
 const TagUpdateState = ({ updateStatus, setUpdateStatus, tagReport, setTagReport }) => {
@@ -23,7 +23,7 @@ const TagUpdateState = ({ updateStatus, setUpdateStatus, tagReport, setTagReport
     return () => {
       window.metadataEditingApi.off('updated-tags', handleUpdateTagsStatus);
     };
-  }, [setUpdateStatus]);
+  }, [setUpdateStatus, setTagReport]);
 
   const handleTagStatusRequest = () => {
     console.log('status request');

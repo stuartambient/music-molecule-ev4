@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useColumnTypes } from './useColumnTypes';
+/* import { useColumnTypes } from './useColumnTypes'; */
 /* import PlayButtonRenderer from './PlayButtonRenderer';
 import { CiPlay1 } from 'react-icons/ci'; */
 //Column state properties in the column definition are no longer parsed to number/boolean. Provide the correct types instead of string

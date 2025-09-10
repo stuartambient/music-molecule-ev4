@@ -216,7 +216,7 @@ const getAlbumsNullImg = () => {
   return albumFiles;
 }; */
 
-const checkRecordsExist = (tracks) => {
+/* const checkRecordsExist = (tracks) => {
   for (const track of tracks) {
     const record = db
       .prepare(
@@ -226,9 +226,8 @@ const checkRecordsExist = (tracks) => {
     `
       )
       .get({ audiotrack: track.audiotrack, track_id: track.track_id });
-    /* console.log('Record:', record); */
   }
-};
+}; */
 
 const getAllPkeys = () => {
   const alltracks = db.prepare('SELECT track_id FROM "audio-tracks"');
@@ -476,7 +475,7 @@ export {
   allMissingCoversByScroll,
   getAllTracks,
   updateCoversInDatabase,
-  checkRecordsExist,
+  /* checkRecordsExist, */
   getAlbumsNullImg,
   getRoots,
   updateRoots,

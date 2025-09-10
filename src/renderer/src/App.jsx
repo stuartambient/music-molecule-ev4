@@ -29,9 +29,6 @@ import './App.css';
 
 function App() {
   const { state, dispatch } = useAudioPlayer();
-  const ws = new WebSocket('ws://localhost:8097');
-  ws.onopen = () => console.log('✅ WebSocket opened to devtools');
-  ws.onerror = (e) => console.error('❌ WebSocket failed', e);
   /*  const [mainTheme, setMainTheme] = useState(''); */
 
   const handleThemeUpdate = useCallback(async () => {

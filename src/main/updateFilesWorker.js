@@ -1,16 +1,15 @@
 /* eslint-disable no-useless-escape */
 import { parentPort, workerData } from 'worker_threads';
 import path from 'node:path';
-import fs from 'node:fs';
 import process from 'node:process';
 import fg from 'fast-glob';
 import Database from 'better-sqlite3';
-import { v4 as uuidv4 } from 'uuid';
-import { File, MpegAudioFileSettings, FlacFileSettings, TagTypes } from 'node-taglib-sharp';
-import decodeTagTypes from './decodeTagTypes.js';
+/* import { v4 as uuidv4 } from 'uuid'; */
+/* import { File, MpegAudioFileSettings, FlacFileSettings, TagTypes } from 'node-taglib-sharp'; */
+/* import decodeTagTypes from './decodeTagTypes.js'; */
 import { fileExtensions } from '../constant/constants.js';
-import { getTagInfo } from './musicMetadata.js';
-import { flattenTagValue, getEncoderFieldsFromNative } from './tags/utils.js';
+/* import { getTagInfo } from './musicMetadata.js'; */
+/* import { flattenTagValue, getEncoderFieldsFromNative } from './tags/utils.js'; */
 import { insertFiles, parseMeta } from './utility/utils.js';
 
 const mode = import.meta.env.MODE;

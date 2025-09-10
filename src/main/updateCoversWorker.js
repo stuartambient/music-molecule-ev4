@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import { parentPort, workerData } from 'worker_threads';
 import path from 'node:path';
 import Database from 'better-sqlite3';

@@ -9,8 +9,8 @@ function EditForm({
   onUpdate,
   nodesSelected,
   hiddenColumns,
-  getSelectedNodes,
-  handleCellContextMenu
+  getSelectedNodes
+  /* handleCellContextMenu */
 }) {
   const { theme } = useTheme();
 
@@ -20,10 +20,10 @@ function EditForm({
   }, {});
 
   const [formData, setFormData] = useState(initialState);
-  const [savedImage, setSavedImage] = useState(null);
+  /* const [savedImage, setSavedImage] = useState(null); */
   const [imageFolder, setImageFolder] = useState(null);
-  const [savedFolder, setSavedFolder] = useState(null);
-
+  /*  const [savedFolder, setSavedFolder] = useState(null);
+   */
   useEffect(() => {
     if (imageFolder) {
       const delayDownload = true;
@@ -49,15 +49,15 @@ function EditForm({
           ? selectedNode.data.performers
           : '';
       const path = selectedNode.data.audiotrack;
+      console.log('album: ', album, 'artist: ', artist, 'path: ', path);
       window.metadataEditingApi.showContextMenu({ artist, album, path }, 'form-picture');
     }
-    console.log('album: ', album, 'artist: ', artist, 'path: ', path);
   };
 
   useEffect(() => {
     const handleForSubmit = (values) => {
       console.log('values: ', values);
-      setSavedImage(values);
+      /*   setSavedImage(values); */
       setFormData((prevFormData) => ({
         ...prevFormData,
         'picture-location': values.tempFile
@@ -71,7 +71,7 @@ function EditForm({
 
   useEffect(() => {
     const handleSaveImageFolder = (value) => {
-      setSavedFolder(value);
+      /* setSavedFolder(value); */
       setFormData((prevFormData) => ({
         ...prevFormData,
         'picture-location': value

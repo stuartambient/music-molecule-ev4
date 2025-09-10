@@ -1,15 +1,14 @@
 import { parentPort, workerData } from 'worker_threads';
 import path from 'node:path';
-import fs from 'node:fs';
 import process from 'node:process';
 import Database from 'better-sqlite3';
 import updateTags from './updateTags';
-import { v4 as uuidv4 } from 'uuid';
-import { File, MpegAudioFileSettings, FlacFileSettings, TagTypes } from 'node-taglib-sharp';
-import decodeTagTypes from './decodeTagTypes.js';
-import { flattenTagValue, getEncoderFieldsFromNative } from './tags/utils';
-import { getTagInfo } from './musicMetadata';
-import { updateFiles, checkDataType, parseMeta } from './utility/utils.js';
+/* import { v4 as uuidv4 } from 'uuid'; */
+/* import { File, MpegAudioFileSettings, FlacFileSettings, TagTypes } from 'node-taglib-sharp'; */
+/* import decodeTagTypes from './decodeTagTypes.js'; */
+/* import { flattenTagValue, getEncoderFieldsFromNative } from './tags/utils'; */
+/* import { getTagInfo } from './musicMetadata'; */
+import { updateFiles, parseMeta } from './utility/utils.js';
 /* import { parseMeta } from './utility'; */
 console.log('worker path: ', path.join(workerData.workerPath, 'music.db'));
 const mode = import.meta.env.MODE;

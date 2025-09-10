@@ -1,9 +1,7 @@
 import { parentPort, workerData } from 'worker_threads';
 import path from 'node:path';
-import fs from 'node:fs';
 import Database from 'better-sqlite3';
 import {
-  Picture,
   File,
   /*   Id3v2TextInformationFrame,
   Id3v2Tag,
@@ -13,7 +11,7 @@ import {
 } from 'node-taglib-sharp';
 import decodeTagTypes from './decodeTagTypes.js';
 import { inspectTags, extraneousTags } from './tag-inspector.js';
-import { extractPresentFields } from './tags/index.js';
+/* import { extractPresentFields } from './tags/index.js'; */
 
 const mode = import.meta.env.MODE;
 const dbPath =
@@ -51,7 +49,9 @@ const updateMany = db.transaction((rows) => {
     } finally {
       try {
         f?.dispose();
-      } catch {}
+      } catch (e) {
+        console.error(e.message);
+      }
     }
   }
 });
@@ -73,7 +73,9 @@ async function cleanTag(rows) {
     } finally {
       try {
         f?.dispose();
-      } catch {}
+      } catch (error) {
+        console.error(error.message);
+      }
     }
   }
   return true; // after the loop completes
