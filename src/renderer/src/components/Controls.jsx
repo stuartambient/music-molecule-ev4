@@ -5,8 +5,7 @@ import { GiPauseButton, GiPlayButton } from 'react-icons/gi';
 import '../style/Controls.css';
 
 const Controls = ({ handlePlayerControls }) => {
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  const { state, dispatch } = useAudioPlayer();
+  const { state /* , dispatch  */ } = useAudioPlayer();
   const controlsClassNames = () => {
     if (state.player && !state.minimalmode) {
       return 'controls';

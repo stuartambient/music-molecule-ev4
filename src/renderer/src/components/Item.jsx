@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 import ContextMenu from './ContextMenu';
 import { useAudioPlayer } from '../mainAudioContext';
 import handleTrackSelect from '../utility/audioUtils';
@@ -7,7 +7,20 @@ import '../style/FlashEffect.css';
 
 const Item = forwardRef((props, ref) => {
   const { state, dispatch } = useAudioPlayer();
+  /* console.log('divId: ', props.divId); */
   /* console.log('props like: ', props.like); */
+
+  useEffect(() => {
+    console.log(`MOUNTED: ${props.divId}`);
+
+    return () => {
+      console.log(`UNMOUNTED: ${props.divId}`);
+    };
+  }, [props.divId]);
+
+  useEffect(() => {
+    console.log(`UPDATED: ${props.divId}`);
+  });
 
   if (props.type === 'files') {
     const newId = props.divId.split('--')[0];
@@ -16,13 +29,13 @@ const Item = forwardRef((props, ref) => {
         className={state.flashDiv?.id === newId ? 'item flash-effect' : props.className}
         id={props.divId}
         ref={ref}
-        fromlisttype={props.type}
+        /* fromlisttype={props.type} */
       >
         <a
           href={props.href}
           id={props.id}
-          val={props.val}
-          fromlisttype={props.type}
+          data-val={props.val}
+          /* fromlisttype={props.type} */
           onClick={(e) =>
             handleTrackSelect(e, state, dispatch, {
               artist: props.artist,

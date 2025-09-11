@@ -4,6 +4,7 @@ import { BsThreeDots } from 'react-icons/bs';
 import '../style/FlashEffect.css';
 
 const ContextMenu = ({ fromlisttype, id, fullpath }) => {
+  /* console.log('fullpath: ', fullpath); */
   const { state, dispatch } = useAudioPlayer();
   const [contextMenuItem, setContextMenuItem] = useState(null);
   const divRef = useRef(null);
@@ -12,7 +13,6 @@ const ContextMenu = ({ fromlisttype, id, fullpath }) => {
     if (!contextMenuItem) return;
 
     const handleContextMenuCommand = (command) => {
-      console.log('Received context menu command:', command);
       switch (command) {
         case 'add-track-to-playlist': {
           const track = state.tracks.find((item) => item.track_id === contextMenuItem.id);
@@ -86,9 +86,7 @@ const ContextMenu = ({ fromlisttype, id, fullpath }) => {
   }, [contextMenuItem, state.tracks, state.playlistTracks, dispatch]);
 
   const handleContextMenu = async (e) => {
-    console.log('context menu clicked');
     e.preventDefault();
-    console.log('divRef.current: ', divRef.current.id, '---', divRef.current.dataset);
     const id = divRef.current.id;
     const type = divRef.current.dataset.type;
     const path = divRef.current.dataset.path;

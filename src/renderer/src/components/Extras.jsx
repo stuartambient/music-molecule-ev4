@@ -4,8 +4,7 @@ import { FaStop } from 'react-icons/fa';
 import '../style/Extras.css';
 
 const Extras = ({ handlePlayerControls }) => {
-  // eslint-disable-next-line unused-imports/no-unused-vars
-  const { state, dispatch } = useAudioPlayer();
+  const { state /* , dispatch  */ } = useAudioPlayer();
   return (
     <ul className="extras">
       <li className="btn" id="stop" onClick={handlePlayerControls}>

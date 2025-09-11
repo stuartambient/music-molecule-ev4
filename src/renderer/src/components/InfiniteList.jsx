@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, Profiler } from 'react';
+import { useState, useRef, useEffect /* , Profiler */ } from 'react';
 import { useAudioPlayer } from '../mainAudioContext';
 import { handleManualChange, unloadFile } from '../utility/audioUtils';
 import { GiPlayButton } from 'react-icons/gi';
@@ -8,7 +8,6 @@ import { Virtuoso } from 'react-virtuoso';
 import MediaMenu from './MediaMenu';
 import Item from './Item';
 import { useTracks, useAlbums, useAlbumTracks, usePlaylistDialog } from '../hooks/useDb';
-import onRender from '../utility/Profiler';
 import '../style/InfiniteList.css';
 
 const InfiniteList = () => {

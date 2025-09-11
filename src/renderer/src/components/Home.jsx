@@ -1,6 +1,5 @@
 import { useState, useRef } from 'react';
 import { useAudioPlayer } from '../mainAudioContext';
-import { v4 as uuidv4 } from 'uuid';
 import { GiMagnifyingGlass } from 'react-icons/gi';
 import { AiFillDownSquare } from 'react-icons/ai';
 import { GrDocumentMissing } from 'react-icons/gr';
@@ -13,7 +12,7 @@ const Home = () => {
   const [homepage /* setHomePage */] = useState('albums-cover-view');
   const [coversSortOrder, setCoversSortOrder] = useState('DESC');
   const [coverSize, setCoverSize] = useState(1);
-  const getKey = () => uuidv4();
+  /* const getKey = () => uuidv4(); */
 
   const handleCoverSize = (e) => {
     setCoverSize(Number(e.target.value));
