@@ -106,7 +106,7 @@ const updateTags = async (arr) => {
       }
 
       //console.log('mergedUpdated: ', mergedUpdates);
-      console.log('merged: ', mergedUpdates);
+      /* console.log('merged: ', mergedUpdates); */
       for (const [key, value] of Object.entries(mergedUpdates)) {
         console.log(key, '---', value);
         if (key === 'picture-location') {

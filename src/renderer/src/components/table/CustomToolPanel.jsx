@@ -18,8 +18,8 @@ const CustomToolPanel = ({
   undos,
   hiddenColumns,
   tagReport,
-  setTagReport,
-  setAllColumnsVisible
+  setTagReport
+  /* setAllColumnsVisible */
 }) => {
   const [updateStatus, setUpdateStatus] = useState('');
 
@@ -92,7 +92,7 @@ const CustomToolPanel = ({
             isModalOpen={isModalOpen}
             onChange={onChange}
             /* setAllColumnsVisible={setAllColumnsVisible} */
-            onBulkToggle={(checked) => setAllColumnsVisible(checked)}
+            /* onBulkToggle={(checked) => setAllColumnsVisible(checked)} */
             hiddenColumns={hiddenColumns}
           />
 

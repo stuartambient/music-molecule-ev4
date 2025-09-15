@@ -1,5 +1,6 @@
 import '../style/Row.css';
 
+// eslint-disable-next-line no-unused-vars, unused-imports/no-unused-vars
 const Row = ({ className, index, data, onClick, onChange, isChecked, stat }) => {
   /* console.log('data: ', data); */
   /* const rowData = data[index];  */

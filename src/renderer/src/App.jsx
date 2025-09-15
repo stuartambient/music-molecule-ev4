@@ -191,9 +191,37 @@ audio/wav canPlay:  maybe */
     };
   }, [state.audioRef, dispatch, state]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (state.pause) state.audioRef.current.pause();
     if (!state.pause) state.audioRef.current.play();
+  }, [state.pause, state.audioRef]); */
+
+  useEffect(() => {
+    const audio = state.audioRef.current;
+    if (!audio) return;
+
+    const handleReady = () => {
+      if (!state.pause) {
+        audio.play().catch((err) => {
+          console.error('play() failed:', err);
+        });
+      }
+    };
+
+    if (state.pause) {
+      audio.pause();
+    } else {
+      // If already loaded, play immediately
+      if (audio.readyState >= 2) {
+        audio.play().catch(console.error);
+      } else {
+        audio.addEventListener('loadedmetadata', handleReady);
+      }
+    }
+
+    return () => {
+      audio.removeEventListener('loadedmetadata', handleReady);
+    };
   }, [state.pause, state.audioRef]);
 
   useEffect(() => {

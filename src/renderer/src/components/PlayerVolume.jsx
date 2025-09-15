@@ -2,7 +2,7 @@ import { useRef, useEffect } from 'react';
 import { useAudioPlayer } from '../mainAudioContext';
 
 const PlayerVolume = () => {
-  const { state, dispatch } = useAudioPlayer();
+  const { state /* dispatch */ } = useAudioPlayer();
   const volumebarOutline = useRef();
   const volumeslider = useRef();
 

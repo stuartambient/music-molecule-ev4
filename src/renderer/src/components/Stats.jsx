@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { FaMeta } from 'react-icons/fa6';
 import { useAudioPlayer } from '../mainAudioContext';
 import {
   TotalMedia,
@@ -13,7 +12,7 @@ import { useDistinctDirectories } from '../hooks/useDb';
 import '../style/Stats.css';
 
 const Stats = () => {
-  const { state, dispatch } = useAudioPlayer();
+  const { state /* dispatch */ } = useAudioPlayer();
   const [statReq, setStatReq] = useState('totalmedia');
   const [key, setKey] = useState('');
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
@@ -29,7 +28,8 @@ const Stats = () => {
   const getKey = () => uuidv4();
 
   useEffect(() => {
-    const handleWindowClosed = (msg) => {
+    const handleWindowClosed = () => {
+      console.log('handleWindowClosed');
       setSelectedRoot(null);
       setNavRootHighlight(null);
     };
@@ -42,7 +42,6 @@ const Stats = () => {
 
   useEffect(() => {
     const handleRefresh = (msg) => {
-      console.log('handle Refresh: ', msg);
       if (msg === 'updated-tags') {
         setKey(getKey());
       }
@@ -63,7 +62,7 @@ const Stats = () => {
     } else if (statReq === 'directories' && !isSubmenuOpen) {
       setStatReq('');
     }
-  }, [isSubmenuOpen, reqDirectories]);
+  }, [isSubmenuOpen, reqDirectories, statReq]);
 
   useEffect(() => {
     const observedElement = resultsRef.current;
@@ -232,7 +231,9 @@ const Stats = () => {
             <Genres dimensions={dimensions} key={key} />
           </>
         )}
-        {root && <TracksByRoot selectedRoot={selectedRoot} setSelectedRoot={setSelectedRoot} />}
+        {selectedRoot && (
+          <TracksByRoot selectedRoot={selectedRoot} setSelectedRoot={setSelectedRoot} />
+        )}
         {/* {root && <StatsLoader />} */}
         {statReq === 'directories' && albumsByRoot.length > 0 && (
           <>

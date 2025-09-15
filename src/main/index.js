@@ -317,15 +317,19 @@ function createWindow() {
 }
 
 function launchDevTools() {
-  const bin = process.platform === 'win32' ? 'react-devtools.cmd' : 'react-devtools';
+  try {
+    const bin = process.platform === 'win32' ? 'react-devtools.cmd' : 'react-devtools';
 
-  const binPath = path.join(app.getAppPath(), 'node_modules', '.bin', bin);
-  console.log('binPath: ', binPath);
-  const bat = spawn(binPath, { shell: true });
-  bat.unref(); // don't tie Electron lifecycle to DevTools
+    const binPath = path.join(app.getAppPath(), 'node_modules', '.bin', bin);
+    console.log('binPath: ', binPath);
+    const bat = spawn(binPath, { shell: true });
+    bat.unref(); // don't tie Electron lifecycle to DevTools
+  } catch (e) {
+    console.error('devtools error: ', e.message);
+  }
 }
 
-launchDevTools();
+/* launchDevTools(); */
 
 app.whenReady().then(async () => {
   const createRootsTable = `CREATE TABLE IF NOT EXISTS roots ( id INTEGER PRIMARY KEY AUTOINCREMENT, root TEXT UNIQUE)`;
@@ -336,6 +340,12 @@ app.whenReady().then(async () => {
   await session.defaultSession.clearCache().then(() => console.log('Cache cleared!'));
 
   electronApp.setAppUserModelId(process.execPath);
+
+  console.log('Electron:', process.versions.electron);
+  console.log('Chromium:', process.versions.chrome);
+  console.log('Node:', process.versions.node);
+  console.log('V8:', process.versions.v8);
+  console.log(process.arch);
 
   getTheme();
   setTimeout(() => {

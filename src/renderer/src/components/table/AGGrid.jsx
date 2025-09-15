@@ -459,9 +459,9 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
     );
   };
 
-  const getAllColIds = () => (gridRef.current?.api.getColumns() || []).map((c) => c.getColId());
+  /*  const getAllColIds = () => (gridRef.current?.api.getColumns() || []).map((c) => c.getColId()); */
 
-  const setAllColumnsVisible = (checked) => {
+  /*   const setAllColumnsVisible = (checked) => {
     const gridApi = gridRef.current?.api;
     if (!gridApi) return;
 
@@ -472,7 +472,7 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
 
     if (toChange.length) gridApi.setColumnsVisible(toChange, checked);
     setHiddenColumns(checked ? [] : getAllColIds());
-  };
+  }; */
 
   const handleMultiRowUpdate = (multiRowChanges) => {
     console.log('multirode changes: ', multiRowChanges);
@@ -739,7 +739,7 @@ const AGGrid = ({ reset, setListType, setReset /*  data */ }) => {
     <>
       <CustomToolPanel
         onChange={handleColumnPanel}
-        setAllColumnsVisible={setAllColumnsVisible}
+        /* setAllColumnsVisible={setAllColumnsVisible} */
         onClick={handleGridMenu}
         nodesSelected={nodesSelected}
         hiddenColumns={hiddenColumns}

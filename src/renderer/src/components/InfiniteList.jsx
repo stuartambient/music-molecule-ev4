@@ -344,7 +344,8 @@ const InfiniteList = () => {
   };
 
   const handleAlbumTracksRequest = (e) => {
-    const term = e.currentTarget.getAttribute('term');
+    const term = e.currentTarget.dataset.term;
+    console.log('term: ', term);
 
     if (showMore === e.currentTarget.id) {
       setShowMore(null);
@@ -498,7 +499,7 @@ const InfiniteList = () => {
                     id={item.track_id}
                     like={item.like}
                     audiofile={item.audiotrack}
-                    val={index}
+                    data-val={index}
                     artist={item.performers ? item.performers : 'not available'}
                     title={item.title ? item.title : item.audiotrack}
                     album={item.album ? item.album : 'not available'}
@@ -584,7 +585,7 @@ const InfiniteList = () => {
                     id={item.track_id}
                     like={item.like}
                     audiofile={item.audiotrack}
-                    val={index}
+                    data-val={index}
                     artist={item.performers ? item.performers : 'not available'}
                     title={item.title ? item.title : item.audiotrack}
                     album={item.album ? item.album : 'not available'}

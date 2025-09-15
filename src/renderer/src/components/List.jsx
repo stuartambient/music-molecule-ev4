@@ -17,7 +17,7 @@ const Header = ({
   handleDeselect,
   multiSelects
 }) => {
-  const { state, dispatch } = useAudioPlayer();
+  const { state /*  dispatch */ } = useAudioPlayer();
   const inputRef = useRef(null);
   const childRef = useRef(null);
   const type = stat.split('-')[1];
@@ -127,7 +127,7 @@ const List = ({
   tableStatus,
   initTable
 }) => {
-  const { state, dispatch } = useAudioPlayer();
+  const { state /* dispatch */ } = useAudioPlayer();
   const [filterValue, setFilterValue] = useState('');
   //const [filteredData, setFilteredData] = useState(data);
   const [multiSelects, setMultiSelects] = useState([]);

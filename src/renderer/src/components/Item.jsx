@@ -1,4 +1,4 @@
-import { forwardRef, useEffect } from 'react';
+import { forwardRef } from 'react';
 import ContextMenu from './ContextMenu';
 import { useAudioPlayer } from '../mainAudioContext';
 import handleTrackSelect from '../utility/audioUtils';
@@ -10,7 +10,7 @@ const Item = forwardRef((props, ref) => {
   /* console.log('divId: ', props.divId); */
   /* console.log('props like: ', props.like); */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     console.log(`MOUNTED: ${props.divId}`);
 
     return () => {
@@ -21,7 +21,7 @@ const Item = forwardRef((props, ref) => {
   useEffect(() => {
     console.log(`UPDATED: ${props.divId}`);
   });
-
+ */
   if (props.type === 'files') {
     const newId = props.divId.split('--')[0];
     return (
@@ -56,7 +56,7 @@ const Item = forwardRef((props, ref) => {
           <br></br>
         </a>
         <div className="item-menu">
-          <ContextMenu fromlisttype={props.type} id={props.id} divid={props.divId} />
+          <ContextMenu fromlisttype={props.type} id={props.id} /* divid={props.divId} */ />
         </div>
       </div>
     );
@@ -68,20 +68,24 @@ const Item = forwardRef((props, ref) => {
         id={props.id}
         className={state.flashDiv?.id === props.id ? 'item flash-effect' : props.className}
         ref={ref}
-        fromlisttype={props.type}
+        /*  fromlisttype={props.type} */
       >
         <div className="item-albumname">
-          <a href={props.href} id={props.id} val={props.val} onClick={(e) => e.preventDefault()}>
+          <a
+            href={props.href}
+            id={props.id}
+            /* val={props.val}  */ onClick={(e) => e.preventDefault()}
+          >
             {props.foldername}
           </a>
         </div>
-        <div className="item-menu" fullpath={props.fullpath}>
+        <div className="item-menu" /* fullpath={props.fullpath} */>
           <ContextMenu fromlisttype={props.type} id={props.id} fullpath={props.fullpath} />
         </div>
         <div
           className="item-albumtrack"
           id={props.id}
-          term={props.term}
+          data-term={props.term}
           onClick={(e) => props.handleAlbumTracksRequest(e)}
         >
           {props.showMore === props.id ? <Minus id="minus" /> : <Plus id="plus" />}
@@ -94,12 +98,12 @@ const Item = forwardRef((props, ref) => {
   }
   if (props.type === 'playlist') {
     return (
-      <div id={props.divId} className={props.className} ref={ref} fromlisttype={props.type}>
+      <div id={props.divId} className={props.className} ref={ref} /* fromlisttype={props.type} */>
         <a
           href={props.href}
           id={props.id}
-          val={props.val}
-          fromlisttype={props.type}
+          data-val={props.val}
+          /* fromlisttype={props.type} */
           onClick={(e) =>
             handleTrackSelect(e, state, dispatch, {
               artist: props.artist,

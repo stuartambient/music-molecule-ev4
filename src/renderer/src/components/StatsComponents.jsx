@@ -59,7 +59,7 @@ export const TotalMedia = () => {
  * @param {(value: null) => void} reset - Setter to clear the selection
  */
 const useTrackLoader = (type, value, reset) => {
-  console.log('type: ', type, 'value: ', value);
+  console.log('type: ', type, 'value: ', value, 'reset: ', reset);
   useEffect(() => {
     if (!value) return;
 
@@ -222,42 +222,9 @@ export const TracksByRoot = ({ selectedRoot, setSelectedRoot }) => {
 
   useTrackLoader('root', selectedRoot, setSelectedRoot);
 
-  // Optional: error handling could also be integrated into the hook if desired
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  return null; // or your actual content
-
-  /*   useEffect(() => {
-    let isSubscribed = true;
-
-    const getTable = async () => {
-      try {
-        const tableStat = await tableStatus();
-        if (isSubscribed) {
-          if (!tableStat) {
-            initTable('root-tracks');
-          }
-          await window.api.getTracksByRoot(root, 'root-tracks');
-        }
-      } catch (err) {
-        if (isSubscribed) {
-          console.error('Error fetching tracks by root:', err);
-          setError(err.message || 'An error occurred while fetching tracks.');
-        }
-      }
-    };
-
-    if (root) {
-      getTable();
-    }
-
-    return () => {
-      isSubscribed = false;
-    };
-  }, [root]);
-
-  if (error) {
-    return <div>Error: {error}</div>; */
+  return null;
 };

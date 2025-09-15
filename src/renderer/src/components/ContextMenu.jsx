@@ -3,8 +3,9 @@ import { useAudioPlayer } from '../mainAudioContext';
 import { BsThreeDots } from 'react-icons/bs';
 import '../style/FlashEffect.css';
 
-const ContextMenu = ({ fromlisttype, id, fullpath }) => {
+const ContextMenu = ({ fromlisttype, id, fullpath = undefined }) => {
   /* console.log('fullpath: ', fullpath); */
+  /*  console.log(fromlisttype, '---', id, '----', fullpath); */
   const { state, dispatch } = useAudioPlayer();
   const [contextMenuItem, setContextMenuItem] = useState(null);
   const divRef = useRef(null);

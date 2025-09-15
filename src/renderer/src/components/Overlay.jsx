@@ -8,10 +8,14 @@ const Overlay = ({ coverTextSize, id, album, fullpath, currentAlbum }) => {
       <span className={coverTextSize} id={id}>
         {album}
       </span>
-      <div className="item-menu" id={id} fullpath={fullpath} album={album}>
+      <div className="item-menu" id={id} /* data-fullpath={fullpath} album={album} */>
         <BsThreeDots className="context-menu" id={fullpath} fullpath={fullpath} album={album} />
       </div>
-      <span className="play-stop-button" id={id} fullpath={fullpath} style={{ alignSelf: 'end' }}>
+      <span
+        className="play-stop-button"
+        id={id}
+        /* fullpath={fullpath}  */ style={{ alignSelf: 'end' }}
+      >
         {currentAlbum === id ? <FaStop /> : <GiPlayButton />}
       </span>
     </div>

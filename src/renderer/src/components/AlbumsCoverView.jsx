@@ -110,9 +110,9 @@ const AlbumsCoverView = ({ /* resetKey,  */ coverSize, className }) => {
   }, [setCurrentAlbum, state.audioRef, dispatch]);
 
   const handlePlayReq = useCallback(
-    async (event, id, fullpath) => {
+    async (event, id) => {
       setCurrentAlbum(id);
-      const albumTracks = await window.api.getAlbumTracks(fullpath);
+      const albumTracks = await window.api.getAlbumTracks(id);
 
       if (albumTracks) {
         dispatch({
@@ -144,7 +144,8 @@ const AlbumsCoverView = ({ /* resetKey,  */ coverSize, className }) => {
           active: albumTracks[0].track_id,
           list: 'playlistActive'
         });
-        setTimeout(() => dispatch({ type: 'start-album' }));
+        /* setTimeout(() => dispatch({ type: 'start-album' }), 2000); */
+        dispatch({ type: 'start-album' });
       }
     },
     [dispatch, state]
@@ -154,13 +155,15 @@ const AlbumsCoverView = ({ /* resetKey,  */ coverSize, className }) => {
     const handleOverlayClick = (event) => {
       console.log('handleOverlayClick: ', event);
       const playButton = event.target.closest('.play-stop-button');
+      /*  console.log('playButton: ', playButton.id); */
       if (playButton) {
-        const id = playButton.getAttribute('id');
-        const fullpath = playButton.getAttribute('fullpath');
+        const id = playButton.id;
+        /* const fullpath = playButton.getAttribute('fullpath'); */
+        /* console.log(id, '--', fullpath); */
         if (currentAlbum === id) {
           stopAlbumPlay();
         } else {
-          handlePlayReq(event, id, fullpath);
+          handlePlayReq(event, id /* , fullpath */);
         }
       } else {
         const contextMenu = event.target.closest('.context-menu');

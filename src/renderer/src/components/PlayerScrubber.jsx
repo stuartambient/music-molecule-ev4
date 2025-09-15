@@ -3,7 +3,7 @@ import { useAudioPlayer } from '../mainAudioContext';
 import { convertDurationSeconds, convertCurrentTime, convertToSeconds } from '../hooks/useTime';
 
 const PlayerScrubber = ({ cTime, setCTime }) => {
-  const { state, dispatch } = useAudioPlayer();
+  const { state /* dispatch */ } = useAudioPlayer();
   /*   const [cTime, setCTime] = useState('00:00'); */
   const [progbarInc, setProgbarInc] = useState(0);
   const [isDragging, setIsDragging] = useState(false);

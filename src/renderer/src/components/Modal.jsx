@@ -4,7 +4,13 @@ import { useTheme } from '../ThemeContext';
 import '../themes.css';
 import '../style/Modal.css';
 
-const Modal = ({ fields, closeModal, isModalOpen, onChange, hiddenColumns, onBulkToggle }) => {
+const Modal = ({
+  fields,
+  closeModal,
+  isModalOpen,
+  onChange,
+  hiddenColumns /* , onBulkToggle */
+}) => {
   const { theme } = useTheme();
   //if (!isModalOpen) return null;
 
@@ -17,7 +23,7 @@ const Modal = ({ fields, closeModal, isModalOpen, onChange, hiddenColumns, onBul
 
   if (!isModalOpen) return null;
 
-  const isChecked = (name) => !hiddenColumns.includes(name);
+  /* const isChecked = (name) => !hiddenColumns.includes(name); */
 
   const toggleAll = (nextChecked) => {
     fields.forEach((f) =>

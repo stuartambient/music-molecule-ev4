@@ -86,7 +86,8 @@ const handleTrackSelect = async (event, state, dispatch, ...params) => {
   event.preventDefault();
   // 2. pull anything you need off `event` now:
   const trackId = event.target.id;
-  const val = event.target.dataset.val;
+  const val = event.target.getAttribute('val');
+  console.log('val: ', val);
 
   // 3. short-circuit if they clicked the already-active track
   /*   if (listType === 'playlist' && activeList === 'tracklistActive') */
