@@ -1,0 +1,131 @@
+:root {
+  --color-bg-1: #2d2d2d;
+  --color-bg-2: #373737;
+  --color-bg-3: #414141;
+  --color-bg-4: #d3d3d3;
+
+  --color-hl-1: #203c56;
+  --color-hl-2: #0064d3;
+  --color-h1-3: #26b0ff;
+  --color-hl-4: #265bff;
+  --color-hl-5: #2686ff;
+  --color-hl-6: #191970;
+
+  --color-text-1: #ffffff;
+
+  --color-active-1: #ff0080;
+  --color-active-2: #ff1d58;
+  --color-active-3: #ff0000;
+
+  --color-overlay: #390502;
+
+  --container-home-background: var(--color-bg-1);
+  --album-cover-tools: var(--color-bg-1);
+  --main-nav-background: var(--color-bg-1);
+  --tags-nav-background: var(--color-bg-1);
+  --tags-results-background: var(--color-bg-1);
+  --tags-list-header-background: var(--color-bg-1);
+  --update-container-background: var(--color-bg-1);
+  --list-background: var(--color-bg-1);
+  --player-background: var(--color-bg-1);
+
+  --active: var(--color-hl-1);
+  --active-album: var(--color-bg-3);
+  --active-album-color: var(--color-text-1);
+  --active-border: var(--color-h1-3);
+  --active-color: var(--color-text-1);
+  --active-controls: var(--color-active-2);
+  --active-controls-font: var(--color-text-1);
+
+  --button-on: var(--color-active-1);
+  --control-on: var(--color-active-1);
+
+  --tags-nav-menu-background-hover: var(--color-h1-3);
+  /*  --tags-row-even-color: var(--color-bg-1); */
+  /* --tags-row-odd: var(--color-bg-1); */
+
+  --album-cover-tools-extra-icons-bkgd: var(--color-bg-3);
+  --form-background: var(--color-bg-3);
+
+  --form-label: var(--color-bg-4);
+
+  --controls-button-hover: var(--color-bg-5);
+  --covers-scrollbar-thumb: var(--color-bg-5);
+  --list-scroll-inactive: var(--color-bg-5);
+
+  /* --active: var(--color-hl-1); */
+  --album-cover-tools-extra-icons-bkgd-hover: var(--color-hl-1);
+
+  /*  --active-album: var(--color-hl-2); */
+  --bar: var(--color-hl-2);
+  --color4: var(--color-hl-2);
+  --controls-background: var(--color-hl-2);
+
+  /*  --active-border: var(--color-h1-3); */
+  --borders: var(--color-h1-3);
+  --color1: var(--color-h1-3);
+  --controls-button-icon-hover: var(--color-h1-3);
+  --form-radio-checked: var(--color-h1-3);
+  --form-button-background: var(--color-h1-3);
+  --list-scroll-active: var(--color-h1-3);
+  --main-nav-hover-color: var(--color-h1-3);
+  --status-loader-bar: var(--color-h1-3);
+  --tab-background-active: var(--color-h1-3);
+  /* --tags-row-even: var(--color-h1-3); */
+
+  --item-hover: var(--color-hl-4);
+  --minimode-control-icons: var(--color-hl-4);
+  --tags-list-header-controls-background: var(--color-hl-4);
+  --album-cover-tools-extra-icons-icon: var(--color-hl-4);
+
+  --color2: var(--color-hl-5);
+  --cover-tools-range-track: var(--color-hl-5);
+  --covers-loading: var(--color-hl-5);
+  --covers-scrollbar: var(--color-hl-5);
+
+  --main-nav-hover-menu: var(--color-hl-5);
+
+  --bar-outline-background: var(--color-hl-6);
+
+  /*  --active-album-color: var(--color-text-1); */
+  /*  --active-color: var(--color-text-1); */
+  /* --active-controls-font: var(--color-text-1); */
+  --color3: var(--color-text-1);
+  --controls-icon: var(--color-text-1);
+  --form-color: var(--color-text-1);
+  --form-button-color: var(--color-text-1);
+  --highlight: var(--color-text-1);
+  --list-font-color: var(--color-text-1);
+  --main-nav-font-color: var(--color-text-1);
+  --main-nav-hover-menu-color: var(--color-text-1);
+  --overlay-color: var(--color-text-1);
+  --player-font-color: var(--color-text-1);
+  --root-highlight-color: var(--color-text-1);
+  --sort-icon-inactive: var(--color-text-1);
+  --status-loader-background: var(--color-text-1);
+  --tab-font-active: var(--color-text-1);
+  --tab-font-inactive: var(--color-text-1);
+  --tags-nav-color: var(--color-text-1);
+  --tags-results-color: var(--color-text-1);
+  --tags-nav-menu-color-hover: var(--color-text-1);
+  --tags-list-header-color: var(--color-text-1);
+  --tags-list-header-text-color: var(--color-text-1);
+  --tags-list-header-input: var(--color-text-1);
+  --tags-nav-selected-color: var(--color-text-1);
+  /* --tags-row-odd-color: var(--color-text-1); */
+
+  /* --active-controls: var(--color-active-1); */
+  --album-cover-tools-extra-icons-icon-hover: var(--color-active-1);
+  --button-hover: var(--color-active-1);
+
+  --covers-scrollbar-buttons: var(--color-active-1);
+  --likedBtn: var(--color-active-1);
+  --root-highlight: var(--color-active-1);
+  --tags-nav-selected: var(--color-active-1);
+
+  --cover-tools-range-thumb: var(--color-active-2);
+
+  --sort-icon-active: var(--color-active-3);
+  --tags-list-header-icon: var(--color-active-3);
+  --overlay: var(--color-overlay);
+}

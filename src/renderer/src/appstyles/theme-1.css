@@ -1,0 +1,119 @@
+.theme-1 {
+  --color-bg-1: #ffffff;
+  --color-bg-2: #adadad;
+  --color-bg-3: #dbd7d2;
+  --color-bg-4: #e0e0e0;
+
+  --color-hl-1: #000000;
+  --color-hl-2: #2f4f4f;
+  --color-h1-3: #265bff;
+  --color-hl-4: #2f2f2f;
+  --color-hl-5: #808080;
+  --color-hl-6: #ffebeb;
+
+  --color-text-1: #000000;
+
+  --color-active-1: #ff0080;
+  --color-active-2: #ff1d58;
+  --color-active-3: #ff0000;
+
+  --color-overlay: #390502;
+
+  --container-home-background: var(--color-bg-1);
+  --album-cover-tools: var(--color-bg-1);
+  --main-nav-background: var(--color-bg-1);
+  --tags-nav-background: var(--color-bg-1);
+  --tags-results-background: var(--color-bg-1);
+  --tags-list-header-background: var(--color-bg-1);
+  --update-container-background: var(--color-bg-1);
+  --list-background: var(--color-bg-1);
+  --player-background: var(--color-bg-1);
+
+  --active: #dbd7d2;
+  --active-album: lightgray;
+  --active-album-color: #000000;
+  --active-border: #2f4f4f;
+  --active-color: #ffffff;
+  --active-controls: #2f4f4f;
+  --active-controls-font: #ffffff;
+  /* --album-cover-tools: #ffffff; */
+  --album-cover-tools-extra-icons-bkgd: #dbd7d2;
+  --album-cover-tools-extra-icons-icon: #000000;
+  --album-cover-tools-extra-icons-bkgd-hover: #000000;
+  --album-cover-tools-extra-icons-icon-hover: #ff0090;
+  --album-tracks-play: #ff0090;
+  --bar: #dbd7d2;
+  --bar-outline-background: #2f2f2f;
+  --borders: #2f4f4f;
+  --button-hover: #265bff;
+  --button-on: #ff0090;
+  --color1: #2f4f4f;
+  --color2: #ffebeb;
+  --color3: #2f2f2f;
+  --color4: #fffefc;
+  --container-home-background: #ffffff;
+  --control-on: #ff0080;
+  --controls-background: #fffefc;
+  --controls-button-hover: lightgray;
+  --controls-button-icon-hover: #265bff;
+  --controls-icon: #2f2f2f;
+  --cover-tools-range-thumb: #808080;
+  --cover-tools-range-track: #000000;
+  --covers-loading: #ffebeb;
+  --covers-scrollbar: #808080;
+  --covers-scrollbar-thumb: #2f4f4f;
+  --covers-scrollbar-buttons: #000000;
+  --form-background: #c2c2c2;
+  --form-label: #e0e0e0;
+  --form-radio-checked: #ff0080;
+  --form-color: #000000;
+  --form-button-background: #ff0080;
+  --form-button-color: #ffffff;
+  --highlight: #000000;
+  --item-hover: #dbd7d2;
+  --likedBtn: #ff0080;
+  /* --list-background: #ffffff; */
+  --list-font-color: #000000;
+  --list-scroll-active: #000000;
+  --list-scroll-inactive: #808080;
+  /*  --main-nav-background: #ffffff; */
+  --main-nav-font-color: #000000;
+  --main-nav-hover-color: #265bff;
+  --main-nav-hover-menu: #000000;
+  --main-nav-hover-menu-color: #ffffff;
+  --minimode-control-icons: #2f2f2f;
+  --overlay: #390502cc;
+  --overlay-color: #ffffff;
+  /* --player-background: #ffffff; */
+  --player-font-color: #000000;
+  --root-highlight: #2f2f2f;
+  --root-highlight-color: #ffffff;
+  --sort-icon-active: #000000;
+  --sort-icon-inactive: #adadad;
+  --status-loader-background: #000000;
+  --status-loader-bar: #ffffff;
+  --tab-background-active: #dbd7d2;
+  --tab-background-inactive: '';
+  --tab-font-active: #000000;
+  --tab-font-inactive: #000000;
+  /* --tags-nav-background: #ffffff; */
+  --tags-nav-color: #000000;
+  /*  --tags-results-background: #ffffff; */
+  --tags-results-color: #000000;
+  --tags-nav-menu-background-hover: #adadad;
+  --tags-nav-menu-color-hover: #000000;
+  /* --tags-list-header-background: #ffffff; */
+  --tags-list-header-color: #000000;
+  --tags-list-header-controls-background: #808080;
+  --tags-list-header-text-color: #ffffff;
+  --tags-list-header-input: #ffffff;
+  --tags-list-header-icon: #ff0080;
+  --tags-nav-selected: #2f2f2f;
+  --tags-nav-selected-color: #ffffff;
+  /* --tags-row-even: lightgray; */
+  /*   --tags-row-even-color: #000000;
+  --tags-row-odd: #ffffff;
+  --tags-row-odd-color: #000000; */
+  --user-indicate: red;
+  /* --update-container-background: #ffffff; */
+}
