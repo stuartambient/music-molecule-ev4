@@ -11,7 +11,7 @@
   color: white;
   justify-items: center;
   align-items: center;
-  background: red'
+  background: var(--update-container-background);
 }
 
 /* .update-container button {
@@ -62,7 +62,6 @@
   border: 1px solid #ccc;
   border-radius: 8px;
   background-color: var(--form-background);
-
 }
 
 .roots-form .radio-group label {
@@ -70,7 +69,7 @@
   height: 3rem;
 }
 
-.roots-form .radio-group input[type="radio"] {
+.roots-form .radio-group input[type='radio'] {
   appearance: none;
   width: 20px;
   height: 20px;
@@ -79,7 +78,7 @@
   background-color: transparent;
 }
 
-.roots-form .radio-group input[type="radio"]:checked {
+.roots-form .radio-group input[type='radio']:checked {
   background-color: var(--form-radio-checked);
 }
 
@@ -97,7 +96,6 @@
 .roots-form h2 {
   align-self: center;
 }
-
 
 .roots-form::-webkit-scrollbar {
   display: none;

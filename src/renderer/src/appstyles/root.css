@@ -12,6 +12,7 @@
   --color-hl-6: #191970;
 
   --color-text-1: #ffffff;
+  --color-text-2: #f5f5f5;
 
   --color-active-1: #ff0080;
   --color-active-2: #ff1d58;
@@ -35,7 +36,7 @@
   --active-border: var(--color-h1-3);
   --active-color: var(--color-text-1);
   --active-controls: var(--color-active-2);
-  --active-controls-font: var(--color-text-1);
+  --active-controls-font: var(--color-text-2);
 
   --button-on: var(--color-active-1);
   --control-on: var(--color-active-1);
